@@ -1,0 +1,56 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Define if you have the mkfifo function.  */
+#undef HAVE_MKFIFO
+
+/* Define if you have the uname function.  */
+#undef HAVE_UNAME
+
+/* Define if you have the <fcntl.h> header file.  */
+#undef HAVE_FCNTL_H
+
+/* Define if you have the <limits.h> header file.  */
+#undef HAVE_LIMITS_H
+
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+
+/* Name of package */
+#undef PACKAGE
+
+/* Version number of package */
+#undef VERSION
+
+
+/* *INDENT-ON* */
+
+/* Location of fortune(6) program */
+#undef FORTUNE
+
+/* Define if fortune(6) is capable of producing offensive fortunes */
+#undef OFFENSIVE_FORTUNES
+
+/* Length of buffers */
+#define BUF_SIZE 1024
+
+/* Maximum number of external program arguments */
+#define MAX_PROG_ARGS 10
+
+/* Structure of nodes in list of offsets/lengths of quotes in quote file */
+struct sig_node {
+    struct sig_node *next_node;
+    int offset;
+    int length;
+};

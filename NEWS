@@ -1,0 +1,54 @@
+Current Version: 0.14
+See the file ChangeLog for the details of all changes.
+
+User-visible changes from 0.13 to 0.14
+
+* fixed bug that caused '<' placeholder to remain behind when there were
+  backspaces or underscores in the text
+
+User-visible changes from 0.12 to 0.13
+
+* white space at the ends of lines is now trimmed
+* ^H (backspace) and _ characters are now ignored in fortune text
+* added a couple of debugging messages (we now report PID and FIFO name)
+* fixed bug that caused FIFO and quote file not to be found when using -f and -q
+
+User-visible changes from 0.11 to 0.12
+
+* signature no longer exits when used with Pine. It still doesn't work,
+  but it no longer exits either.
+
+User-visible changes from 0.10 to 0.11
+
+* external programs can now be called with arguments (shell quoting required)
+* quote files can now use either ~ or % as a separator
+
+User-visible changes from 0.04 to 0.10
+
+* no-daemon mode is now selected with -n
+* -d now provides debugging output on stderr
+* support for quote files with -q
+* bug fix for some fatal errors not clearing up temporary FIFO
+* man page updated for quote files
+
+User-visible changes from 0.03 to 0.04
+
+* configure now checks for availability of offensive fortunes
+  (Red Hat doesn't use them by default)
+* man page updated to reflect the above
+
+User-visible changes from 0.02 to 0.03
+
+* when supplying an alternative program to fortune with the -p switch,
+  the full path no longer has to be provided
+* man page updated to reflect the above change
+* usage message omitted -f in option list
+* signature now forks into background on start-up. The -d switch has
+  been added to prevent this for debugging purposes.
+
+User-visible changes from 0.01 to 0.02
+
+* default sig format string changed for kernel and architecture strings
+  of different lengths
+* zombie process build-up bug solved
+* usage message tidied up
