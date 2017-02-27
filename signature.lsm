@@ -1,0 +1,13 @@
+Begin3
+Title:          signature
+Version:        0.14
+Entered-date:   26th November 2000
+Description:    This program will allow you to sign your e-mail and news
+		postings with a different signature every time.
+Keywords:       e-mail, news, signature, generator, fortune, quotes
+Author:         ian@caliban.org (Ian Macdonald)
+Maintained-by:  ian@caliban.org (Ian Macdonald)
+Primary-site:   sunsite.unc.edu /pub/linux/utils/text
+		signature-0.14.tar.gz
+Copying-policy: GPL 2.0
+End

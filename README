@@ -1,0 +1,92 @@
+signature
+=========
+
+Ever wanted to have witty and pithy sigs attached to your e-mail and
+news postings, but got tired having the same old one attached every
+time?
+
+That's where signature comes in. signature is a free, open-source
+producer of dynamic signatures for livening up your e-mail and news
+postings. It will allow you to sign your messages with a different sig
+every time.
+
+The idea for the program came from an old Perl script in the Camel
+Book (http://www.oreilly.com/catalog/pperl2/) that demonstrated the
+use of named pipes.
+
+This C implementation was written as an exercise in programming. I'm an
+experienced UNIX sysadmin, not a professional programmer, although back
+in the dark ages I used to program for pleasure quite a lot in BASIC
+(back when they still used line numbers), Pascal, Modula-2 and Z80
+assembler.
+
+In recent years, I've used Perl more or less exclusively, and - since
+it's such a flexible language - I just never got further than the
+basics of C. I decided to change all that recently and have been
+doing a lot of reading and sifting through C code.
+
+signature is pretty much the first fruit to come of these labours.
+
+Since this program is the work of a novice in C, please excuse any
+golden rules of programming that I've inadvertently broken in the
+code. Do feel free to inform me of them, however, and I'll endeavour
+to find a way to program more elegantly.
+
+signature has been successfully compiled and tested on Linux
+2.2.x. Early versions were also known to work on Solaris 2.6. Maybe
+the current one still does, but I no longer have access to such a box
+to test it.
+
+I'd like signature to be portable if at all possible, so if there's a
+platform you'd like it to work on, let me know what's required (or
+better still, send a diff).
+
+The program was developed on an x86 Red Hat Linux 6.2 system.
+
+Sources consulted during the development of this software include:
+
+'Beginning Linux Programming' by Richard Stones & Neil Matthew
+(1996 Wrox Press ISBN 1-874416-68-0)
+
+    This excellent book gave me the lowdown on many of the techniques
+    used in the code.
+
+Linux Man Page HOWTO by Jens Schweikhardt <schweikh@noc.dfn.de> and man(7)
+by Rickard E. Faith <faith@cs.unc.edu> & David A. Wheeler <dwheeler@ida.org>
+(http://www.linuxdoc.org/HOWTO/mini/Man-Page.html)
+
+    These gave me the Linux standard by which to write my man page, plus
+    many useful tips on producing documentation.
+
+GNU Coding Standards by Richard Stallman 
+(http://www.fsf.org/prep/standards_toc.html)
+
+    This very thorough document provided some excellent pointers on how
+    to write the code. I can't say I agree with the whole document,
+    however, so the code in signature isn't entirely compliant.
+
+GNU autoconf & automake manuals (http://www.fsf.org/manual/manual.html)
+
+    These explained how to create a decent build environment.
+
+Software Release Practice HOWTO v2.0 by Eric S. Raymond <esr@thyrsus.com>
+(http://www.linuxdoc.org/HOWTO/Software-Release-Practice-HOWTO.html)
+
+    This explained how to go about releasing the package.
+
+Read INSTALL for details on how to compile and install the program and
+its man page.
+
+The software can be obtained from:
+
+    http://www.caliban.org/files/signature/signature-0.14.tar.gz
+
+RPM format packages can be obtained from:
+
+    http://www.caliban.org/files/signature/signature-0.14-1.i386.rpm
+    http://www.caliban.org/files/signature/signature-0.14-1.src.rpm
+
+The source code is available under the GPL 2.0 licence.
+
+-- 
+Ian Macdonald <ian@caliban.org>

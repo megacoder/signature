@@ -1,0 +1,126 @@
+Mon Jul 17 13:10:49 EDT 2000  Ian Macdonald  <ian@caliban.org>
+
+	* format.c: fixed bug that caused '<' placeholder to remain behind
+	  when there were backspaces or underscores in the text
+
+Sun Jul  2 18:01:27 EDT 2000  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: fixed bug that caused FIFO and quote file not to be
+	  found when using -f and -q options
+
+	* signature.c: added a couple of debugging messages
+
+	* format.c: white space now trimmed from the end of sig lines
+
+	* format.c: ^H (backspace) and _ now ignored in fortune output
+
+	* signature.1: added bug that % in fortune text may be
+	  misinterpreted as printf(3) format specifier
+
+Sun Apr 16 16:06:16 PDT 2000  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c signature.h: Pine fails to play properly with
+	  signature, because an fstat(2) on the FIFO prior to opening it
+	  returns 0 in stat.st_size, causing Pine to open and close it
+	  without actually reading anything. The resulting SIGPIPE is now
+	  ignored using ignore_sigpipe(). It doesn't make signature work
+	  with Pine, but it at least stops the program from exiting.
+
+	* signature.1: updated to reflect the fact that Pine is broken
+	  with respect to FIFO signatures
+	
+Sun Feb 13 23:47:24 CET 2000  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: external programs can now be called with arguments
+	  (shell quoting required). The code for this was adapted from a
+	  patch supplied by Bob Salnick <salnick@salnick.cac.washington.edu>
+
+	* quote.c: quote files can now use either ~ or % as a separator
+
+	* signature.1: changes to reflect the above
+
+Thu Dec 30 01:19:23 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: moved uname() code to format.c
+
+	* format.c: return code check of uname() now checks for == -1
+	  instead of != 0, since a positive integer also indicates success
+	  on Solaris.
+
+	* signature.c format.c quote.c: not all fatal errors caused
+	  FIFO to be cleared up on exit. Fixed.
+
+	* signature.1: DIAGNOSTICS section removed. Most of the error
+	  messages issued by signature are self-explanatory.
+
+Wed Dec 29 01:19:06 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: -d for no-daemon mode is now -n
+
+	* signature.c: -d now provides debugging output on stderr
+
+	* signature.c: caught_signal() added
+
+	* signature.c: del_fifo() renamed unlink_fifo()
+
+	* signature.c: signal handler installation moved from init_fifo()
+	  to its own function: install_sig_handler()
+
+	* format.c format.h: broke out format_sig() into its own 
+	  source files
+
+	* quote.c quote.h: new source files for quote file functions
+
+	* Makefile.am: use CFLAGS, not DEFS, for compiler warning
+	  switches
+
+	* acconfig.h: new file for use with autoheader. This gives us
+	  config.h.in, which autoconf processes to give us config.h.
+	  This file contains defines, so that they no longer have to
+	  be supplied to the compiler on the command line in @DEFS@
+
+	* signature.1: updated with information about quote files
+
+Mon Dec 27 17:01:50 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.h: put function prototypes into a header file
+
+Sun Dec 26 19:27:50 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: daemon mode made more daemon-like
+
+	* Makefile.am: build environment now uses GNU automake
+
+	* configure.in signature.c: check for availability of
+	  offensive fortunes (Red Hat doesn't use them by default)
+
+Mon Dec 20 23:13:34 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: signature now forks into background on
+	  start-up. The -d switch has been added to prevent this
+	  for debugging purposes.
+
+	* signature.1: changes to reflect the above
+
+Mon Dec 13 00:40:32 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: when supplying an alternative program to fortune
+	  with the -p switch, the full path no longer has to be
+	  provided. We now check for the existence of the given program
+	  by forking and trying to exec it in the child.
+
+	* signature.1: minor modification to reflect the above change
+
+	* signature.c: usage message omitted -f in option list
+
+Sun Nov 21 12:22:07 CET 1999  Jarmo Pussinen <pussinen@saunalahti.fi>
+
+	* signature.c: default sig format string changed for kernel
+	  and architecture strings of different lengths
+
+Mon Nov  8 12:05:51 CET 1999  Ian Macdonald  <ian@caliban.org>
+
+	* signature.c: call to waitpid() added to stop child processes
+	  becoming zombies (sigh, it's not easy being a beginner)
+
+	* signature.c: usage message tidied up

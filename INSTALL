@@ -1,0 +1,29 @@
+Installation of signature is easy. Just do:
+
+    ./configure
+    make
+    make install
+
+I'm just starting to get the hang of autoconf, automake and autoheader,
+so I could probably have done certain things more easily and added other
+useful checks. Bear with me; these things take time.
+
+Once the program is installed, create a signature template (see the man
+page for details) called, say ~/signature, and then run signature as
+follows:
+
+    signature -t ~/signature
+
+You might like to put this command in your ~/.bash_profile or similar
+start-up script for the greatest ease of use.
+
+If you've compiled your own collection of pithy sayings, you might
+prefer to compile a quote file and start signature like this:
+
+    signature -t ~/signature -q ~/quote_file
+
+If you don't like fortune cookies, you may prefer something like this:
+
+    signature -t ~/signature -p uptime
+
+which will add system uptime information to your signature.

@@ -1,0 +1,51 @@
+dnl $Id: configure.in,v 1.1 2009/10/24 17:48:09 reynolds Exp $
+
+dnl Process this file with autoconf to produce a configure script.
+AC_REVISION([$Id: configure.in,v 1.1 2009/10/24 17:48:09 reynolds Exp $])
+AC_INIT(signature.c)
+AM_CONFIG_HEADER(config.h)
+
+AM_INIT_AUTOMAKE(signature, 0.14)
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PATH_PROG(fortune, fortune, none, /usr/games:/usr/local/games:/usr/local/bin:/opt/bin:/opt/games:$PATH)
+if test "$fortune" = "NONE"; then
+    AC_MSG_ERROR(Oh dear[,] I couldn't find fortune on this system)
+else
+    AC_ARG_ENABLE(offensive, [  --enable-offensive      build with offensive fortunes], [if test $enableval = yes; then
+	     dnl --enable-offensive-fortunes
+	     $fortune -a
+	     if test $? = 0; then
+		 AC_DEFINE_UNQUOTED(OFFENSIVE_FORTUNES)
+	     else
+		 AC_MSG_WARN(Your fortune program doesn't produce offensive cookies!)
+	     fi
+	 else
+	     dnl --disable-offensive-fortunes
+	     :
+	 fi],
+	[dnl No option given
+	 $fortune -a
+	 if test $? = 0; then
+	     AC_DEFINE_UNQUOTED(OFFENSIVE_FORTUNES)
+	 else
+	     AC_MSG_WARN(Your fortune program doesn't produce offensive cookies!)
+	 fi])
+AC_DEFINE_UNQUOTED(FORTUNE, "$fortune")
+fi
+
+dnl Checks for libraries.
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h limits.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(mkfifo uname)
+
+AC_OUTPUT(Makefile)
+AC_OUTPUT_COMMANDS([echo OK, now type \'make\' to build signature])

@@ -1,0 +1,200 @@
+.\" signature.1 - the dynamic signature program
+.\"
+.\" $Id: signature.1,v 1.1 2009/10/24 17:48:09 reynolds Exp $
+.\"
+.\" Copyright (C) Ian Macdonald <ian@caliban.org>
+.\"
+.\" Process this file with
+.\" groff -man -Tascii signature.1
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2, or (at your option)
+.\" any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
+
+.TH SIGNATURE 1 "2nd July 2000" "Ian Macdonald"
+
+.ds sg \fBsignature\fP
+
+.SH NAME
+signature \- the dynamic signature program
+
+.SH SYNOPSIS
+.B signature
+[
+.B -d
+] [
+.B -f
+.I FIFO
+] [
+.B -n
+] [
+.B -p
+.I program
+|
+.B -q
+.I quote file
+] [
+.B -r
+] [
+.B -t
+.I template
+]
+.br
+.B signature -h
+|
+.B -v
+
+.SH DESCRIPTION
+\*(sg is a program for producing dynamic signatures for e-mail
+and news postings.
+
+.SH OPTIONS
+.B
+.IP -d
+print debugging messages on stderr
+
+.B
+.IP "-f \fIFIFO\fR"
+Use this file as the named pipe. This defaults to
+.IR ~/.signature ,
+which is usually what you want.
+
+.B
+.IP -h
+Display this help message and exit.
+
+.B
+.IP -n
+Don't fork into background as daemon.
+
+.B
+.IP "-p \fIprogram\fR"
+Use this program instead of
+.BR fortune (6) .
+Your $PATH will be searched for the program, which can can be supplied with
+arguments by quoting the entire string supplied to this option.
+
+.B
+.IP "-q \fIquote file\fR"
+Use this quote file instead of calling
+.BR fortune (6) .
+
+.B
+.IP -r
+Force removal of an existing signature FIFO.
+By default, \*(sg will fail with an error message if it detects
+that the file it wishes to use as a FIFO already exists.
+
+.B
+.IP "-t \fItemplate\fR"
+Use this signature template instead of default.
+
+.B
+.IP -v
+Display version information and exit.
+
+.SH FILES
+.I ~/.signature
+.RS
+The default FIFO used for passing signatures.
+
+.SH ENVIRONMENT
+HOME
+.RS
+Used for ascertaining the user's home directory, if the default
+FIFO is used.
+.RE
+PATH
+.RS
+Used for searching for external programs supplied to the
+.B -p
+option.
+.RE
+
+.SH NOTES
+.SS SIGNATURE TEMPLATES
+The default signature template looks something like this:
+
+\fC
+.nf
+Linux, the choice          | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+of a GNU generation   -o)  | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Kernel %-9.9s          /\\  | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+on a %-6.6s           _\\_v | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                           | <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+.fi
+
+.PP
+If you want to make your own template, you should create a plain
+ASCII file containing the desired fixed text and placeholders.
+The area with < characters denotes where the dynamic signature
+text should be placed. Currently, there should be no more than
+one of these areas per line.
+
+.PP
+If printf style format specifiers are encountered, the first of
+these will be replaced with the current kernel version. The second
+will be replaced with the current architecture.
+
+.SS QUOTE FILES
+The format of a quote file is something like this:
+
+\fC
+.nf
+There is no sincerer love than the love of food.
+                -- George Bernard Shaw
+~
+There is no such thing as a problem without a gift for you in its hands.
+~
+Do infants have as much fun in infancy as adults do in adultery?
+~
+"I wanna tell you a tale,
+ of how I loved and
+ how I failed"
+ -- The Verve
+~
+.fi
+
+.PP
+In other words, a quote file should consist of one or more quotes,
+separated by a tilde on a line by itself. The last quote should also be
+terminated by a tilde.
+
+.PP
+As an alternative to the tilde, the percent sign (%) may also be used.
+
+.SH BUGS
+.PP
+It is not possible to preserve the white space formatting of a quote
+file quote or fortune program cookie.
+
+.PP
+Strange things may happen if the external program used to generate a
+signature produces % signs in its output. This may be interpreted as a
+printf(3) format specifier.
+
+.PP
+Pine fails to play properly with signature, because an fstat(2) on the
+signature FIFO prior to opening it returns 0 in stat.st_size, causing
+Pine to open and close it without actually reading anything. This
+causes a SIGPIPE, which signature calmly ignores.
+
+.PP
+E-mail bug reports to the author. Better yet, send a diff.
+
+.SH AUTHOR
+Ian Macdonald <ian@caliban.org>
+
+.SH SEE ALSO
+.BR printf (3),
+.BR fortune (6)
