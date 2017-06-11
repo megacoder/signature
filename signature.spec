@@ -2,7 +2,7 @@ Name: signature
 Version: 0.14
 Release: 1
 Summary: a dynamic signature generator for e-mail and news
-Copyright: GPL
+License: GPL
 Group: Amusements/Games
 URL: http://www.caliban.org/linux_signature.html
 Source: http://www.caliban.org/files/signature/%{name}-%{version}.tar.gz
