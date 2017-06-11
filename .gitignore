@@ -15,3 +15,4 @@ depcomp
 signature
 *.tar.*
 stamp-h1
+/RPM/
