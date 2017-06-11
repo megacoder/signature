@@ -1,3 +1,6 @@
 /*
  * Move along now; nothing to see here; there's a good lad.
  */
+
+#define PACKAGE @NAME@
+#define VERSION @VERSION@
