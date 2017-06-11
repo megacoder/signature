@@ -1,4 +1,5 @@
 #define _XOPEN_SOURCE
+#define	_DEFAULT_SOURCE
 
 #include <config.h>
 
@@ -34,7 +35,7 @@
 /* *INDENT-ON* */
 
 static char		fifo[ PATH_MAX + 1];
-static char		quote_file[BUF_SIZE];
+static	char		quote_file[ PATH_MAX + 1 ];
 unsigned		debug = 0;
 
 /* display version information */
@@ -156,9 +157,9 @@ main(
 	char *		argv[]
 )
 {
-	char		signature[BUF_SIZE+1];
-	char		sig_buf[BUF_SIZE+1];
-	char		fortune[BUF_SIZE+1];
+	char		signature[ BUF_SIZE + 1 ];
+	char		sig_buf[ BUF_SIZE + 1 ];
+	char		fortune[ BUF_SIZE + 1 ];
 	char *		producer = NULL;
 	char *		prodarg = NULL;
 	char *		prodargs[MAX_PROG_ARGS+1];

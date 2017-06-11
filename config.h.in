@@ -4,3 +4,13 @@
 
 #define PACKAGE @NAME@
 #define VERSION @VERSION@
+#define FORTUNE @FORTUNE@
+
+struct  sig_node        {
+        struct  sig_node *      next_node;
+        int                     offset;
+        int                     length;
+};
+
+#define MAX_PROG_ARGS   10
+#define BUF_SIZE        (4096)

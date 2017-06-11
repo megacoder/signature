@@ -1,6 +1,9 @@
 #!/bin/sh
 (
-	autoreconf -fvi
+	# autoreconf -fvi
+	aclocal --install
+	autoconf --force
+	automake --add-missing --copy --force-missing
 	./configure
 	make dist
 	rm -rf RPM
