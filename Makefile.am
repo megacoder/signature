@@ -6,13 +6,14 @@ bin_PROGRAMS = signature
 signature_SOURCES = signature.c signature.h format.c format.h \
 		    quote.c quote.h
 man_MANS = signature.1
-EXTRA_DIST = $(man_MANS) signature.spec signature.lsm
+EXTRA_DIST = $(man_MANS) signature.spec.in signature.lsm
 
 # Plenty of compiler warnings
-CFLAGS = @CFLAGS@ -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align \
-	 -Wwrite-strings -Waggregate-return -Wstrict-prototypes \
-	 -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
-	 -pedantic -ansi
+
+AM_CFLAGS=-Waggregate-return -Wall -Wcast-align -Wcast-qual            \
+         -Wmissing-declarations -Wmissing-prototypes -Wnested-externs  \
+         -Wpointer-arith -Wshadow -Wstrict-prototypes -Wwrite-strings  \
+         -ansi -pedantic
 
 signature.ps:	$(srcdir)/signature.1
 		groff -Tps -man $(srcdir)/signature.1 > $(srcdir)/signature.ps
