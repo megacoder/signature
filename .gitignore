@@ -3,3 +3,15 @@ configure
 Makefile
 *~
 *.bak
+/.deps/
+*.swp
+*.o
+Makefile.in
+compile
+config.h
+config.log
+config.status
+depcomp
+signature
+*.tar.*
+stamp-h1
