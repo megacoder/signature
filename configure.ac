@@ -47,5 +47,8 @@ AC_C_CONST
 dnl Checks for library functions.
 AC_CHECK_FUNCS(mkfifo uname)
 
-AC_OUTPUT(Makefile)
+AC_OUTPUT([
+   Makefile
+   signature.spec
+])
 AC_OUTPUT_COMMANDS([echo OK, now type \'make\' to build signature])

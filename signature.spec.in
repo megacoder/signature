@@ -1,13 +1,17 @@
+%define ver     @VERSION@
+%define rel     1
+%define prefix  /usr
+
 Name: signature
-Version: 0.14
-Release: 1
+Version: %{ver}
+Release: %{rel}
 Summary: a dynamic signature generator for e-mail and news
 License: GPL
 Group: Amusements/Games
 URL: http://www.caliban.org/linux_signature.html
 Source: http://www.caliban.org/files/signature/%{name}-%{version}.tar.gz
 BuildRoot: /tmp/%{name}-%{version}
-Packager: Ian Macdonald <ian@caliban.org>
+Packager: Tommy Reynolds <oldest.software.guy@gmail.com>
 Requires: fortune-mod
 
 %changelog
