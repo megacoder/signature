@@ -16,3 +16,4 @@ signature
 *.tar.*
 stamp-h1
 /RPM/
+*.spec
