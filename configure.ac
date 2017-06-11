@@ -1,11 +1,12 @@
 dnl $Id: configure.in,v 1.1 2009/10/24 17:48:09 reynolds Exp $
 
 dnl Process this file with autoconf to produce a configure script.
-AC_REVISION([$Id: configure.in,v 1.1 2009/10/24 17:48:09 reynolds Exp $])
-AC_INIT(signature.c)
-AM_CONFIG_HEADER(config.h)
-
-AM_INIT_AUTOMAKE(signature, 0.14)
+AC_PREREQ([2.69])
+AC_INIT([signature], [0.14], [oldest.software.guy@gmail.com])
+AC_CONFIG_SRCDIR([signature.c])
+AC_CONFIG_HEADERS([config.h])
+AM_INIT_AUTOMAKE
+AM_MAINTAINER_MODE
 
 dnl Checks for programs.
 AC_PROG_CC
